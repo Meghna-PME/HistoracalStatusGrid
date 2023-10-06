@@ -1,0 +1,310 @@
+<div ng-init="init()">
+	<!--- K Window -->
+	<div id="KWindowStatusMain" style="display:none;max-height: 80vh !important;" class="kCUSwindow" kendo-window="KWindowStatusMain" k-title="'Project Status'" k-width="1000" k-height="500" k-visible="false" k-on-open="KWindowStatusMainvisible = true" k-on-close="KWindowStatusMainvisible = false">
+		<div class="k-content" style="    padding-left: 5%;   /*padding-top: 15px;*/">
+			<div class="form-horizontal">
+				<div class="form-group">
+					<button id="btnPreData" ng-show='PreFillViewMode' style="background-color: white; float: right;    margin-right: 51px;  width: 125px !important; font-size: 13px !important;" class="k-button btn btn-primary btnS save-button" title="Fill from Previous Data" ng-click="SaveFillfromPrevious();">Fill from Previous</button>
+				</div>
+				<div class="form-group" ng-show='ViewMode'>
+					<div class="col-sm-1 riskscss no-padding">
+						<label for="StatusMainTitle">Title</label>
+					</div>
+					<div class="col-sm-9  no-padding">
+						<input type="text" id="StatusMainTitle" disabled style=" border-color: lightgray; width: 105%; padding-left: 7px;" maxlength="100" class="k-input k-inputPadTextBox k-window-input-width k-window-input-control" data-ng-model="Item.Title" />
+					</div>
+				</div>
+				<div class="form-group" title="">
+					<div class="col-sm-1 riskscss no-padding" title="">
+						<label class="k-two-col-label" for="ScheduleHealth">
+							Schedule
+							<span class="pointer" ng-show="StatusListF[6].Description != null && StatusListF[6].Description !='' " kendo-tooltip k-content="StatusListF[6].Description">
+								<span class="k-icon k-i-information	k-i-info" style="color: blue; "></span>
+							</span>
+						</label>
+					</div>
+					<div class="col-sm-4 no-padding">
+						<div class="tab">
+							<button type='button' class="tablinks1 NotSet" ng-disabled='ViewMode' onclick="opencolor(event, 'Not Set','NotSet','tablinks1')">Grey</button>
+							<button type='button' class="tablinks1" ng-disabled='ViewMode' onclick="opencolor(event, 'Green','NotSet','tablinks1')">Green</button>
+							<button type='button' class="tablinks1" ng-disabled='ViewMode' onclick="opencolor(event, 'Yellow','NotSet','tablinks1')">Yellow</button>
+							<button type='button' class="tablinks1" ng-disabled='ViewMode' onclick="opencolor(event, 'Red','NotSet','tablinks1')">Red</button>
+						</div>
+					</div>
+					<div class="col-sm-1 riskscss no-padding" title="">
+						<label class="k-two-col-label" for="ResourcesHealth">
+							Resource
+							<span class="pointer" ng-show="StatusListF[5].Description != null && StatusListF[5].Description !='' " kendo-tooltip k-content="StatusListF[5].Description">
+								<span class="k-icon k-i-information	k-i-info" style="color: blue; 	"></span>
+							</span>
+						</label>
+					</div>
+					<div class="col-sm-4  no-padding">
+						<div class="tab">
+							<button type='button' class="tablinks2 NotSet" ng-disabled='ViewMode' onclick="opencolor(event, 'Not Set','NotSet2','tablinks2')">Grey</button>
+							<button type='button' class="tablinks2" ng-disabled='ViewMode' onclick="opencolor(event, 'Green','NotSet2','tablinks2')">Green</button>
+							<button type='button' class="tablinks2" ng-disabled='ViewMode' onclick="opencolor(event, 'Yellow','NotSet2','tablinks2')">Yellow</button>
+							<button type='button' class="tablinks2" ng-disabled='ViewMode' onclick="opencolor(event, 'Red','NotSet2','tablinks2')">Red</button>
+						</div>
+					</div>
+				</div>
+				<div class="form-group" title="">
+					<div class="col-sm-1 riskscss no-padding" title="">
+						<label class="k-two-col-label" for="ScopeHealth">
+							Scope
+							<span class="pointer" ng-show="StatusListF[7].Description != null && StatusListF[7].Description !='' " kendo-tooltip k-content="StatusListF[7].Description">
+								<span class="k-icon k-i-information	k-i-info" style="color: blue; 	"></span>
+							</span>
+						</label>
+					</div>
+					<div class="col-sm-4  no-padding">
+						<div class="tab">
+							<button type='button' class="tablinks3 NotSet" ng-disabled='ViewMode' onclick="opencolor(event, 'Not Set','NotSet3','tablinks3')">Grey</button>
+							<button type='button' class="tablinks3" ng-disabled='ViewMode' onclick="opencolor(event, 'Green','NotSet3','tablinks3')">Green</button>
+							<button type='button' class="tablinks3" ng-disabled='ViewMode' onclick="opencolor(event, 'Yellow','NotSet3','tablinks3')">Yellow</button>
+							<button type='button' class="tablinks3" ng-disabled='ViewMode' onclick="opencolor(event, 'Red','NotSet3','tablinks3')">Red</button>
+						</div>
+					</div>
+					<div class="col-sm-1 riskscss no-padding" title="">
+						<label class="k-two-col-label" for="OverallStatus">
+							Overall
+							<span class="pointer" ng-show="StatusListF[4].Description != null && StatusListF[4].Description !='' " kendo-tooltip k-content="StatusListF[4].Description">
+								<span class="k-icon k-i-information	k-i-info" style="color: blue; 	"></span>
+							</span>
+						</label>
+					</div>
+					<div class="col-sm-4  no-padding">
+						<div class="tab">
+							<button type='button' class="tablinks4 NotSet" ng-disabled='ViewMode' onclick="opencolor(event, 'Not Set','NotSet4','tablinks4')">Grey</button>
+							<button type='button' class="tablinks4" ng-disabled='ViewMode' onclick="opencolor(event, 'Green','NotSet4','tablinks4')">Green</button>
+							<button type='button' class="tablinks4" ng-disabled='ViewMode' onclick="opencolor(event, 'Yellow','NotSet4','tablinks4')">Yellow</button>
+							<button type='button' class="tablinks4" ng-disabled='ViewMode' onclick="opencolor(event, 'Red','NotSet4','tablinks4')">Red</button>
+						</div>
+					</div>
+				</div>
+				<div class="form-group" title="">
+					<div class="col-sm-12 riskscss no-padding" title="">
+						<label class="k-two-col-label" for="GoLive">Items Completed<span style="color:red;font-weight:bold">*</span></label>
+					</div>
+					<div class="col-sm-11 no-padding" ng-hide='ViewMode' id='div_txtItemsCompleted'>
+						<textarea name="txtItemsCompleted" style="width: 100%;" id="txtItemsCompleted" rows="7" class="k-input k-window-input-width k-window-input-control" data-ng-model="Item.GoLive"></textarea>
+					</div>
+					<div class="col-sm-11 no-padding" ng-show='ViewMode'>
+						<p class="bordercolorPG ng-binding" style=" padding: 7px;" ng-bind-html="to_trusted(Item.GoLive)"></p>
+					</div>
+				</div>
+				<div class="form-group" title="">
+					<div class="col-sm-12 riskscss no-padding" title="">
+						<label class="k-two-col-label" for="ExecutiveSummary">Items Upcoming<span style="color:red;font-weight:bold">*</span></label>
+					</div>
+					<div class="col-sm-11 no-padding" ng-hide='ViewMode' id='div_txtItemsUpcoming'>
+						<textarea name="txtItemsUpcoming" rows="7" style="width: 100%;" id="txtItemsUpcoming" class="k-input k-window-input-width k-window-input-control" data-ng-model="Item.ExecSummary"></textarea>
+					</div>
+					<div class="col-sm-11 no-padding" ng-show='ViewMode'>
+						<p class="bordercolorPG ng-binding" style=" padding: 7px;" ng-bind-html="to_trusted(Item.ExecSummary)"></p>
+					</div>
+				</div>
+				<div class="form-group" title="" ng-show='ViewMode'>
+					<div class="col-sm-2 riskscss no-padding" title="">
+						<label for="StatusDate">
+							Week Ending Date
+							<span class="pointer" ng-show="StatusListF[8].Description != null && StatusListF[8].Description !='' " kendo-tooltip k-content="StatusListF[8].Description">
+								<span class="k-icon k-i-information	k-i-info" style="color: blue;"></span>
+							</span>
+						</label>
+					</div>
+					<div class="col-sm-3 no-padding">
+						<input type="text" id="StatusDate" style="width: 212px;" ng-disabled='ViewMode' class="k-input k-inputPadTextBox k-window-input-width k-window-input-control" data-ng-model="Item.StatusDate" />
+					</div>
+				</div>
+				<div class="col-sm-12" ng-show='dat'>
+					<div class="form-group">
+						<div class="files" id="attachFilesHolder">
+							<label for="ecProjectDescription" class="control-label">Attach a File:</label>
+							<input id="file_input" type="file" name="files[]">
+						</div>
+					</div>
+				</div>
+				<div class="form-group" title="" ng-show='dat'>
+					<div class="col-sm-12">
+						<div class="col-sm-1">
+							<label style="margin-left: -16px;" for="email">Attachments: </label>
+						</div>
+						<div class="col-sm-9" ng-show="Item.Attachment.results.length != 0">
+							<span ng-repeat="x in Item.Attachment.results">
+								<a href="{{x.ServerRelativeUrl}}" title="{{x.ServerRelativeUrl}}">{{x.FileName}} </a>
+								<a href="" title="Delete Attachment" ng-hide='ViewMode' style="margin-left: 20px;" ng-click="SMainremoveFileFromList(Item,x, $index)">
+									<span class="pointer"><span class="k-icon k-i-trash"></span></span>
+								</a><br>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer foot-modal-footer Kendo-foot-modal-footer">
+					<div>
+						<span class="required" ng-show="ischkStatusMainAlert" style="color:red;font-weight:bold">Please populate all required fields indicated with an *</span>
+					</div>
+					<div class="col-sm-7 no-padding-left"></div>
+					<div class="col-sm-4" ng-hide='ViewMode'>
+						<button id="btnStatusMainsave" style="background-color: white;font-size: 13px !important;" class="k-button btn btn-primary btnS save-button" title="Save changes & exit" ng-click="SaveStatusMain();">Save</button>
+						<button id="btnStatusMainClose" style="background-color: white;font-size: 13px !important;" class="k-button btn btnC  save-button" ng-click="CloseStatusMainForm();">Close</button>
+					</div>
+					<div class="col-sm-4" ng-show='ViewMode'>
+						<button id="btnStatuysMainEdit" ng-hide='TrueProjectName || editviewdisble' style="background-color: white;font-size: 13px !important;" class="k-button btn btn-primary btnS save-button" title="Click to Edit" ng-click="EditStatusMain();">Edit</button>
+						<button id="btnEditStatusMainClose" style="background-color: white;font-size: 13px !important;" class="k-button btn btnC  save-button" ng-click="CloseStatusMainForm();">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div title="" ng-show='masde'>
+		<span id='tablinkfiled1'></span>
+		<span id='tablinkfiled2'></span>
+		<span id='tablinkfiled3'></span>
+		<span id='tablinkfiled4'></span>
+		<span id='tablinkfiled5'></span>
+		<span id='tablinkfiled6'></span>
+		<span id='tablinkfiled7'></span>
+	</div>
+	<div style="margin: 10px;" ng-show='TrueProjectName'>
+		<span style="float: right;">
+			<span style='font-weight:bold;'>View:</span>
+			<span ng-click="MainGrrdForm()">
+				<span id="" style='color:#337ab7;cursor: pointer;' class="pointer btnSColums"> Key Columns</span>
+			</span> | <span ng-click="ExportAllForm()">
+				<span id="" style='color:#337ab7;cursor: pointer;' class="pointer btnAllcoumns"> All Columns</span>
+			</span>
+		</span><br>
+	</div>
+	<div style="margin: 10px;" ng-hide='TrueProjectName'>
+		<span>
+			<a href="" style='color:#337ab7;' id="AddNewItemID" ng-hide="WeekNumberIstrue" ng-click="AddNewItemWindow()">
+				<span class="pointer"><span class="k-icon k-i-plus"></span> Add New</span>
+			</a>
+		</span>
+		<span style="float: right;">
+			<span style='font-weight:bold;'>View:</span>
+			<span ng-click="MainGrrdForm()">
+				<span id="" style='color:#337ab7;cursor: pointer;' class="pointer btnSColums"> Key Columns</span>
+			</span> | <span ng-click="ExportAllForm()">
+				<span id="" style='color:#337ab7;cursor: pointer;' class="pointer btnAllcoumns"> All Columns</span>
+			</span>
+		</span><br>
+	</div>
+	<div id="StatusMaingrid"></div>
+</div>
+<!--<link rel="stylesheet" href="styles/kendo.common.min.css" />
+ <link rel="stylesheet" href="styles/kendo.default.min.css" />
+ <link rel="stylesheet" href="styles/kendo.default.mobile.min.css" />
+ <script src="js/jquery.min.js"></script>
+ <script src="js/kendo.all.min.js"></script>-->
+<link href="../LocalURLs/Status.css" rel="stylesheet" />
+<style>
+		body {
+			font-family: Arial;
+		}
+
+		.tab {
+			background-color: #f1f1f1;
+			width: auto
+		}
+
+			.tab button {
+				background-color: inherit;
+				float: left;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				padding: 5px 0px;
+				transition: 0.3s;
+				font-size: 13px;
+				margin: 0px;
+				min-width: 6em;
+			}
+
+				.tab button:hover {
+					background-color: #ddd;
+				}
+
+				.tab button.NotSet {
+					background-color: Black;
+					color: white;
+				}
+
+				.tab button.active {
+					background-color: Black;
+					color: white;
+				}
+
+				.tab button.NotSet {
+					background-color: Grey;
+					color: white;
+				}
+
+				.tab button.Green {
+					background-color: #41bd46;
+					color: white;
+				}
+
+				.tab button.Yellow {
+					background-color: #F9FF33;
+					color: black;
+				}
+
+				.tab button.Red {
+					background-color: red;
+					color: white;
+				}
+
+		.tabcontent {
+			display: none;
+			padding: 6px 12px;
+			border: 1px solid #ccc;
+			border-top: none;
+		}
+
+		.tablinks {
+			width: 20%
+		}
+
+		.tab button.NotSet1 {
+			background-color: Grey;
+			color: white;
+		}
+
+		.tab button.NotSet2 {
+			background-color: Grey;
+			color: white;
+		}
+
+		.tab button.NotSet3 {
+			background-color: Grey;
+			color: white;
+		}
+
+		.tab button.NotSet4 {
+			background-color: Grey;
+			color: white;
+		}
+
+		.tab button.NotSet5 {
+			background-color: Grey;
+			color: white;
+		}
+
+		.tab button.NotSet6 {
+			background-color: Grey;
+			color: white;
+		}
+
+		.k-tooltip-content {
+			text-align: left;
+		}
+
+		.k-window {
+			top: 5% !important;
+			height: auto !important;
+			/*left: 10% !important;
+
+	}
+</style>
