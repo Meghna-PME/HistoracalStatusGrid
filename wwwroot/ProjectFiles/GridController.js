@@ -218,10 +218,11 @@ KendoPApp.controller('ProjectStatusMainController', ['$scope', "$http", "$q", "$
   $scope.AddNewItemWindow = function () {
 	$scope.ischkStatusMainAlert = false;
 	  var projuid = projId;
-	  if (location.hostname == 'projectmadeeasy.sharepoint.com') {
-		  var url = SpURL + "/_api/ProjectData?$Select=ProjectId&$orderby=ProjectId%20desc&$top=1&$filter=(ProjectId eq guid'" + projuid + "')";
+	  if (location.hostname == 'localhost') {
+		 var url = 'Data.json';
 	  } else {
-		  var url = 'Data.json';
+		   var url = SpURL + "/_api/ProjectData?$Select=ProjectId&$orderby=ProjectId%20desc&$top=1&$filter=(ProjectId eq guid'" + projuid + "')";
+		  
 	  }
 	PService.GetAllItems('Status Grid: Data', url).then(function (response) {
 	  var ScheduleHealth = 'Grey'
@@ -331,10 +332,10 @@ KendoPApp.controller('ProjectStatusMainController', ['$scope', "$http", "$q", "$
 	$scope.ischkStatusMainAlert = false;
 	$scope.PreFillViewMode = false;
 	  var projuid = projId;
-	  if (location.hostname == 'projectmadeeasy.sharepoint.com') {
-		  var url = SpURL + "/_api/ProjectData?$Select=ProjectId&$orderby=ProjectId%20desc&$top=1&$filter=(ProjectId eq guid'" + projuid + "')";
+	  if (location.hostname == 'localhost') {
+		  var url = 'Data.json';  
 	  } else {
-		  var url = 'Data.json';
+		 var url = SpURL + "/_api/ProjectData?$Select=ProjectId&$orderby=ProjectId%20desc&$top=1&$filter=(ProjectId eq guid'" + projuid + "')"; 
 	  }
 	PService.GetAllItems('Status Grid: Data', url).then(function (response) {
 	  var ScheduleHealth = 'Grey'
@@ -456,10 +457,10 @@ KendoPApp.controller('ProjectStatusMainController', ['$scope', "$http", "$q", "$
   $scope.SaveFillfromPrevious = function(){
 	var data = $scope.PrefilldataB;			
 	  var projuid = projId;
-	  if (location.hostname == 'projectmadeeasy.sharepoint.com') {
-		  var url = SpURL + "/_api/ProjectData?$Select=ProjectId&$orderby=ProjectId%20desc&$top=1&$filter=(ProjectId eq guid'" + projuid + "')";
+	  if (location.hostname == 'localhost') {
+		var url = 'Data.json';  
 	  } else {
-		  var url = 'Data.json';
+		 var url = SpURL + "/_api/ProjectData?$Select=ProjectId&$orderby=ProjectId%20desc&$top=1&$filter=(ProjectId eq guid'" + projuid + "')"; 
 	  }
 	PService.GetAllItems('Status Grid: Data', url).then(function (response) {
 	  var ScheduleHealth = 'Grey'
